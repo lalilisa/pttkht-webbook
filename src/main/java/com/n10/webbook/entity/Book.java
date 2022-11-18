@@ -48,7 +48,7 @@ public class Book implements Serializable{
     private Author author;
 
 
-    @JsonBackReference
+    @JsonManagedReference
     @ManyToOne
     @JoinColumn(name = "PublisherID")
     private Publisher publisher;
