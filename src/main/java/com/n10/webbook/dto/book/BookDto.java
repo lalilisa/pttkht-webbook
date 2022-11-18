@@ -28,4 +28,7 @@ public class BookDto {
     @Schema(nullable = true,example = "1")
     private Long publisherId;
 
+    @Schema(nullable = true,example = "1")
+    private Long categoryId;
+
 }
