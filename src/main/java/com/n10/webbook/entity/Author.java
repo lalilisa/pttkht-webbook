@@ -1,5 +1,6 @@
 package com.n10.webbook.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -29,7 +30,7 @@ public class Author {
     @Column(name = "NickName")
     private String nickName;
 
-    @JsonManagedReference
+    @JsonBackReference
     @OneToMany(mappedBy="author")
     private Set<Book> books;
 

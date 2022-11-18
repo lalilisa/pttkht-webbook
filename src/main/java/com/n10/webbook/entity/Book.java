@@ -47,7 +47,7 @@ public class Book {
     private Author author;
 
 
-    @JsonBackReference
+    @JsonManagedReference
     @ManyToOne
     @JoinColumn(name = "PublisherID")
     private Publisher publisher;
