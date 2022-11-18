@@ -126,8 +126,6 @@ public class Comment {
     public String toString() {
         return "Comment{" +
                 "id=" + id +
-                ", book=" + book +
-                ", customer=" + customer +
                 ", comment='" + comment + '\'' +
                 ", createdDate=" + createdDate +
                 ", subComment=" + subComment +

@@ -51,8 +51,6 @@ public class Cart {
                 "id=" + id +
                 ", amount=" + amount +
                 ", totalPrice=" + totalPrice +
-                ", items=" + items +
-                ", orders=" + orders +
                 ", createdDatetime=" + createdDatetime +
                 ", updatedDatetime=" + updatedDatetime +
                 '}';

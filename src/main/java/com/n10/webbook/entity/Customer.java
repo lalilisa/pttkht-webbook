@@ -65,14 +65,10 @@ public class Customer {
     public String toString() {
         return "Customer{" +
                 "id=" + id +
-                ", cart=" + cart +
                 ", dateOfBirth=" + dateOfBirth +
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
                 ", member=" + member +
-                ", fullname=" + fullname +
-                ", address=" + address +
-                ", account=" + account +
                 ", createdDatetime=" + createdDatetime +
                 ", updatedDatetime=" + updatedDatetime +
                 '}';

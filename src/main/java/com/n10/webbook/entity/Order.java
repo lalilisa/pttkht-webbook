@@ -56,10 +56,6 @@ public class Order {
     public String toString() {
         return "Order{" +
                 "id=" + id +
-                ", cart=" + cart +
-                ", cash=" + cash +
-                ", card=" + card +
-                ", listOrderDetail=" + listOrderDetail +
                 ", tocalPrice=" + tocalPrice +
                 ", orderStatus=" + orderStatus +
                 ", createdDatetime=" + createdDatetime +

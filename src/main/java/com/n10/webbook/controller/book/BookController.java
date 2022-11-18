@@ -4,8 +4,8 @@ package com.n10.webbook.controller.book;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.n10.webbook.common.util.ConvertDtoToEntity;
 import com.n10.webbook.common.util.response.ResponseHander;
-import com.n10.webbook.dto.QueryUserDto;
 import com.n10.webbook.dto.book.BookDto;
+import com.n10.webbook.dto.book.QueryBookDto;
 import com.n10.webbook.entity.Book;
 import com.n10.webbook.repository.book.BookRepository;
 import com.n10.webbook.service.BookService;
@@ -24,22 +24,19 @@ import org.springframework.web.bind.annotation.*;
 public class BookController {
 
     @Autowired
-    private BookRepository bookService;
+    private BookService bookService;
     @GetMapping("")
-    public ResponseEntity<?> listBooks(@ParameterObject QueryUserDto queryDto) throws JsonProcessingException {
-        System.out.println(bookService.findAll());
-        return  ResponseHander.response(bookService.findAll(), HttpStatus.OK);
+    public ResponseEntity<?> listBooks(@ParameterObject QueryBookDto queryDto) throws JsonProcessingException {
+        return  ResponseHander.response(bookService.findAll(queryDto), HttpStatus.OK);
     }
     @GetMapping("{id}")
     public ResponseEntity<?> getOneBook(@PathVariable Long id)  {
 
-        return  ResponseHander.response(bookService.findAll(), HttpStatus.OK);
+        return  ResponseHander.response(bookService.findOneById(id), HttpStatus.OK);
     }
-    @PostMapping("")
-    public ResponseEntity<?> createBooks(@RequestBody BookDto bookDto) {
-        Book book= ConvertDtoToEntity.map(bookDto,Book.class);
-        System.out.println(book);
-        return  ResponseHander.response(bookService.findAll(), HttpStatus.OK);
+    @PostMapping(value = "",consumes = {"multipart/form-data"})
+    public ResponseEntity<?> createBooks(@ModelAttribute BookDto bookDto) {
+        return  ResponseHander.response(bookService.createNewBook(bookDto), HttpStatus.OK);
     }
 
     @PutMapping("{id}")
@@ -51,7 +48,7 @@ public class BookController {
 
     @DeleteMapping("{id}")
     public ResponseEntity<?> deleteBooks(@PathVariable Long id) {
-        //bookService.deleleById(id);
+        bookService.deleleById(id);
         return  ResponseHander.response("Success", HttpStatus.OK);
     }
 }

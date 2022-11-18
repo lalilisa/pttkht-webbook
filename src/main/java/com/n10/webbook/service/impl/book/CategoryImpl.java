@@ -44,7 +44,7 @@ public class CategoryImpl extends AbstractJpaDAO<Category> implements CategorySe
 
     @Override
     public Category findOneById(long id) {
-        return this.findOneById(id);
+        return this.findOne(id);
     }
 
 

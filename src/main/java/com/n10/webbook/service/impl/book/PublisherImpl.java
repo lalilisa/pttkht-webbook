@@ -44,7 +44,7 @@ public class PublisherImpl extends AbstractJpaDAO<Publisher> implements Publishe
 
     @Override
     public Publisher findOneById(long id) {
-        return this.findOneById(id);
+        return this.findOne(id);
     }
 
     @Override

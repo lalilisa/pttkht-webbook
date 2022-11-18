@@ -2,12 +2,13 @@ package com.n10.webbook.dto.book;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 @Data
 public class BookDto {
-    @JsonBackReference
+    @JsonIgnore
     private Long id;
 
     @Schema(example = "Start")

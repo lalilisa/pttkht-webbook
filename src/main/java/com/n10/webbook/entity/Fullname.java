@@ -47,7 +47,6 @@ public class Fullname {
     public String toString() {
         return "Fullname{" +
                 "id=" + id +
-                ", customer=" + customer +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", midName='" + midName + '\'' +

@@ -45,7 +45,6 @@ public class Shipment {
     public String toString() {
         return "Shipment{" +
                 "id=" + id +
-                ", order=" + order +
                 ", shipPrice=" + shipPrice +
                 ", type='" + type + '\'' +
                 ", address='" + address + '\'' +

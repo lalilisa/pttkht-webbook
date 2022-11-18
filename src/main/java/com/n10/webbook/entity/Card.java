@@ -41,7 +41,6 @@ public class Card {
     public String toString() {
         return "Card{" +
                 "id=" + id +
-                ", order=" + order +
                 ", numberAccount='" + numberAccount + '\'' +
                 ", createdDatetime=" + createdDatetime +
                 ", updatedDatetime=" + updatedDatetime +

@@ -16,7 +16,7 @@ import java.util.Set;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class Book{
+public class Book implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -42,7 +42,7 @@ public class Book{
     @OneToMany(mappedBy = "book")
     private Set<Image> images;
 
-    @JsonBackReference
+//    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "AuthorID")
     private Author author;
@@ -174,11 +174,6 @@ public class Book{
                 ", publishYear='" + publishYear + '\'' +
                 ", numberOfPages=" + numberOfPages +
                 ", language='" + language + '\'' +
-                ", items=" + items +
-                ", images=" + images +
-                ", author=" + author +
-                ", publisher=" + publisher +
-                ", categories=" + categories +
                 ", createdDatetime=" + createdDatetime +
                 ", updatedDatetime=" + updatedDatetime +
                 '}';

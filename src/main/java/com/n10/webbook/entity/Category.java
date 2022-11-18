@@ -77,14 +77,13 @@ public class Category implements Serializable {
         this.updatedDatetime = updatedDatetime;
     }
 
-//    @Override
-//    public String toString() {
-//        return "Category{" +
-//                "id=" + id +
-//                ", type='" + type + '\'' +
-//                ", bookes=" + bookes +
-//                ", createdDatetime=" + createdDatetime +
-//                ", updatedDatetime=" + updatedDatetime +
-//                '}';
-//    }
+    @Override
+    public String toString() {
+        return "Category{" +
+                "id=" + id +
+                ", type='" + type + '\'' +
+                ", createdDatetime=" + createdDatetime +
+                ", updatedDatetime=" + updatedDatetime +
+                '}';
+    }
 }

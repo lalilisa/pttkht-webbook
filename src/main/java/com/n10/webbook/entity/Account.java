@@ -126,7 +126,6 @@ public class Account {
     public String toString() {
         return "Account{" +
                 "id=" + id +
-                ", customer=" + customer +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", state='" + state + '\'' +

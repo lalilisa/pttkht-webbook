@@ -107,7 +107,6 @@ public class Author implements Serializable {
                 ", name='" + name + '\'' +
                 ", dateOfBirth=" + dateOfBirth +
                 ", nickName='" + nickName + '\'' +
-                ", books=" + books +
                 ", createdDatetime=" + createdDatetime +
                 ", updatedDatetime=" + updatedDatetime +
                 '}';

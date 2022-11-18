@@ -45,7 +45,7 @@ public class AuthorImpl extends AbstractJpaDAO<Author> implements AuthorService 
 
     @Override
     public Author findOneById(long id) {
-        return this.findOneById(id);
+        return this.findOne(id);
     }
 
     @Override
