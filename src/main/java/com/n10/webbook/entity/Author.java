@@ -1,27 +1,22 @@
 package com.n10.webbook.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+
 import java.util.Date;
 import java.util.Set;
 
 @Table(name = "author")
 @Entity
-@Data
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id")
 public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID", nullable = false)
+    @Column(name = "id", nullable = false)
     private Long id;
 
     @Column(name = "Name")
@@ -34,6 +29,7 @@ public class Author {
     @Column(name = "NickName")
     private String nickName;
 
+    @JsonManagedReference
     @OneToMany(mappedBy="author")
     private Set<Book> books;
 
@@ -47,4 +43,72 @@ public class Author {
     @UpdateTimestamp
     private Date updatedDatetime;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
+
+    public Set<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(Set<Book> books) {
+        this.books = books;
+    }
+
+    public Date getCreatedDatetime() {
+        return createdDatetime;
+    }
+
+    public void setCreatedDatetime(Date createdDatetime) {
+        this.createdDatetime = createdDatetime;
+    }
+
+    public Date getUpdatedDatetime() {
+        return updatedDatetime;
+    }
+
+    public void setUpdatedDatetime(Date updatedDatetime) {
+        this.updatedDatetime = updatedDatetime;
+    }
+
+    @Override
+    public String toString() {
+        return "Author{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", dateOfBirth=" + dateOfBirth +
+                ", nickName='" + nickName + '\'' +
+                ", books=" + books +
+                ", createdDatetime=" + createdDatetime +
+                ", updatedDatetime=" + updatedDatetime +
+                '}';
+    }
 }

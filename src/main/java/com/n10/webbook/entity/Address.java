@@ -1,9 +1,8 @@
 package com.n10.webbook.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import lombok.Data;
+
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -12,16 +11,13 @@ import java.util.Date;
 
 @Table(name = "address")
 @Entity
-@Data
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id")
 public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID", nullable = false)
+    @Column(name = "id", nullable = false)
     private Long id;
 
+    @JsonBackReference
     @OneToOne
     @JoinColumn(name = "CustomerID")
     private Customer customer;
@@ -47,4 +43,82 @@ public class Address {
     @Column(name = "updated_datetime")
     @UpdateTimestamp
     private Date updatedDatetime;
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "id=" + id +
+                ", customer=" + customer +
+                ", numberHouse='" + numberHouse + '\'' +
+                ", street='" + street + '\'' +
+                ", district='" + district + '\'' +
+                ", city='" + city + '\'' +
+                ", createdDatetime=" + createdDatetime +
+                ", updatedDatetime=" + updatedDatetime +
+                '}';
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public String getNumberHouse() {
+        return numberHouse;
+    }
+
+    public void setNumberHouse(String numberHouse) {
+        this.numberHouse = numberHouse;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getDistrict() {
+        return district;
+    }
+
+    public void setDistrict(String district) {
+        this.district = district;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public Date getCreatedDatetime() {
+        return createdDatetime;
+    }
+
+    public void setCreatedDatetime(Date createdDatetime) {
+        this.createdDatetime = createdDatetime;
+    }
+
+    public Date getUpdatedDatetime() {
+        return updatedDatetime;
+    }
+
+    public void setUpdatedDatetime(Date updatedDatetime) {
+        this.updatedDatetime = updatedDatetime;
+    }
 }

@@ -1,10 +1,8 @@
 package com.n10.webbook.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.*;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -15,16 +13,12 @@ import java.util.Set;
 
 @Table(name = "book")
 @Entity
-@Data
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id")
 @AllArgsConstructor
 @NoArgsConstructor
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID", nullable = false)
+    @Column(name = "id", nullable = false)
     private Long id;
 
     @Column(name = "Title")
@@ -39,16 +33,21 @@ public class Book {
     @Column(name = "Language")
     private String language;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "book")
     private Set<Item> items;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "book")
     private Set<Image> images;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "AuthorID")
     private Author author;
 
+
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "PublisherID")
     private Publisher publisher;
@@ -70,4 +69,117 @@ public class Book {
     @UpdateTimestamp
     private Date updatedDatetime;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getPublishYear() {
+        return publishYear;
+    }
+
+    public void setPublishYear(String publishYear) {
+        this.publishYear = publishYear;
+    }
+
+    public Integer getNumberOfPages() {
+        return numberOfPages;
+    }
+
+    public void setNumberOfPages(Integer numberOfPages) {
+        this.numberOfPages = numberOfPages;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
+    public Set<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(Set<Item> items) {
+        this.items = items;
+    }
+
+    public Set<Image> getImages() {
+        return images;
+    }
+
+    public void setImages(Set<Image> images) {
+        this.images = images;
+    }
+
+    public Author getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(Author author) {
+        this.author = author;
+    }
+
+    public Publisher getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(Publisher publisher) {
+        this.publisher = publisher;
+    }
+
+    public Set<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(Set<Category> categories) {
+        this.categories = categories;
+    }
+
+    public Date getCreatedDatetime() {
+        return createdDatetime;
+    }
+
+    public void setCreatedDatetime(Date createdDatetime) {
+        this.createdDatetime = createdDatetime;
+    }
+
+    public Date getUpdatedDatetime() {
+        return updatedDatetime;
+    }
+
+    public void setUpdatedDatetime(Date updatedDatetime) {
+        this.updatedDatetime = updatedDatetime;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", publishYear='" + publishYear + '\'' +
+                ", numberOfPages=" + numberOfPages +
+                ", language='" + language + '\'' +
+                ", items=" + items +
+                ", images=" + images +
+                ", author=" + author +
+                ", publisher=" + publisher +
+                ", categories=" + categories +
+                ", createdDatetime=" + createdDatetime +
+                ", updatedDatetime=" + updatedDatetime +
+                '}';
+    }
 }
