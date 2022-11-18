@@ -49,8 +49,6 @@ public class Item {
     public String toString() {
         return "Item{" +
                 "id=" + id +
-                ", cart=" + cart +
-                ", book=" + book +
                 ", barcode='" + barcode + '\'' +
                 ", price=" + price +
                 ", createdDatetime=" + createdDatetime +

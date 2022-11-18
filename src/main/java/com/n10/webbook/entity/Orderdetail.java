@@ -53,7 +53,6 @@ public class Orderdetail {
     public String toString() {
         return "Orderdetail{" +
                 "id=" + id +
-                ", order=" + order +
                 ", titile='" + titile + '\'' +
                 ", barcode='" + barcode + '\'' +
                 ", price=" + price +

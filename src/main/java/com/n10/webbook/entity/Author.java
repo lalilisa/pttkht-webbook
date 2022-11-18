@@ -106,7 +106,6 @@ public class Author {
                 ", name='" + name + '\'' +
                 ", dateOfBirth=" + dateOfBirth +
                 ", nickName='" + nickName + '\'' +
-                ", books=" + books +
                 ", createdDatetime=" + createdDatetime +
                 ", updatedDatetime=" + updatedDatetime +
                 '}';

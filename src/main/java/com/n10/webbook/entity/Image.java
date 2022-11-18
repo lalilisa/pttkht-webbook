@@ -82,7 +82,6 @@ public class Image {
     public String toString() {
         return "Image{" +
                 "id=" + id +
-                ", book=" + book +
                 ", imgUrl='" + imgUrl + '\'' +
                 ", createdDatetime=" + createdDatetime +
                 ", updatedDatetime=" + updatedDatetime +

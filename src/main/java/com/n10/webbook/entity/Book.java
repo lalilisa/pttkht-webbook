@@ -173,11 +173,6 @@ public class Book {
                 ", publishYear='" + publishYear + '\'' +
                 ", numberOfPages=" + numberOfPages +
                 ", language='" + language + '\'' +
-                ", items=" + items +
-                ", images=" + images +
-                ", author=" + author +
-                ", publisher=" + publisher +
-                ", categories=" + categories +
                 ", createdDatetime=" + createdDatetime +
                 ", updatedDatetime=" + updatedDatetime +
                 '}';

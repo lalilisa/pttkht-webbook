@@ -41,7 +41,6 @@ public class Cash {
     public String toString() {
         return "Cash{" +
                 "id=" + id +
-                ", order=" + order +
                 ", unit='" + unit + '\'' +
                 ", createdDatetime=" + createdDatetime +
                 ", updatedDatetime=" + updatedDatetime +
