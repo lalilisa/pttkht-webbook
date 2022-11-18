@@ -1,9 +1,8 @@
 package com.n10.webbook.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import lombok.Data;
+
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -12,16 +11,13 @@ import java.util.Date;
 
 @Table(name = "shipment")
 @Entity
-@Data
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id")
 public class Shipment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID", nullable = false)
+    @Column(name = "id", nullable = false)
     private Long id;
 
+    @JsonBackReference
     @OneToOne
     @JoinColumn(name = "OrderID")
     private Order order;
@@ -44,4 +40,73 @@ public class Shipment {
     @Column(name = "updated_datetime")
     @UpdateTimestamp
     private Date updatedDatetime;
+
+    @Override
+    public String toString() {
+        return "Shipment{" +
+                "id=" + id +
+                ", order=" + order +
+                ", shipPrice=" + shipPrice +
+                ", type='" + type + '\'' +
+                ", address='" + address + '\'' +
+                ", createdDatetime=" + createdDatetime +
+                ", updatedDatetime=" + updatedDatetime +
+                '}';
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+
+    public Double getShipPrice() {
+        return shipPrice;
+    }
+
+    public void setShipPrice(Double shipPrice) {
+        this.shipPrice = shipPrice;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public Date getCreatedDatetime() {
+        return createdDatetime;
+    }
+
+    public void setCreatedDatetime(Date createdDatetime) {
+        this.createdDatetime = createdDatetime;
+    }
+
+    public Date getUpdatedDatetime() {
+        return updatedDatetime;
+    }
+
+    public void setUpdatedDatetime(Date updatedDatetime) {
+        this.updatedDatetime = updatedDatetime;
+    }
 }

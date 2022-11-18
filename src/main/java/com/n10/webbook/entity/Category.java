@@ -1,10 +1,10 @@
 package com.n10.webbook.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.*;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
@@ -13,19 +13,16 @@ import java.util.Set;
 
 @Table(name = "category")
 @Entity
-@Data
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id")
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID", nullable = false)
+    @Column(name = "id", nullable = false)
     private Long id;
 
     @Column(name = "Type")
     private String type;
 
+    @JsonBackReference
     @ManyToMany(mappedBy = "categories")
     Set<Book> bookes;
 
@@ -38,4 +35,55 @@ public class Category {
     @Column(name = "updated_datetime")
     @UpdateTimestamp
     private Date updatedDatetime;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public Set<Book> getBookes() {
+        return bookes;
+    }
+
+    public void setBookes(Set<Book> bookes) {
+        this.bookes = bookes;
+    }
+
+    public Date getCreatedDatetime() {
+        return createdDatetime;
+    }
+
+    public void setCreatedDatetime(Date createdDatetime) {
+        this.createdDatetime = createdDatetime;
+    }
+
+    public Date getUpdatedDatetime() {
+        return updatedDatetime;
+    }
+
+    public void setUpdatedDatetime(Date updatedDatetime) {
+        this.updatedDatetime = updatedDatetime;
+    }
+
+//    @Override
+//    public String toString() {
+//        return "Category{" +
+//                "id=" + id +
+//                ", type='" + type + '\'' +
+//                ", bookes=" + bookes +
+//                ", createdDatetime=" + createdDatetime +
+//                ", updatedDatetime=" + updatedDatetime +
+//                '}';
+//    }
 }
