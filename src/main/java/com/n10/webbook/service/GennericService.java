@@ -9,6 +9,7 @@ import java.util.List;
 public interface GennericService<T>{
         ResponseListAll findAlls(QueryDto queryDto) throws JsonProcessingException;
         List<T> findAll(QueryDto queryDto) throws JsonProcessingException;
+        List<T> findAll();
         T findOneById(long id);
         T create(T entity);
         T update(T entity);
