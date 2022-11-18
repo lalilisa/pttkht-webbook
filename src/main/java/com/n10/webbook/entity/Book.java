@@ -42,7 +42,7 @@ public class Book implements Serializable{
     @OneToMany(mappedBy = "book")
     private Set<Image> images;
 
-//    @JsonBackReference
+    @JsonManagedReference
     @ManyToOne
     @JoinColumn(name = "AuthorID")
     private Author author;
