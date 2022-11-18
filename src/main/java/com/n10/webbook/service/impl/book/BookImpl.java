@@ -20,6 +20,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class BookImpl  extends AbstractJpaDAO<Book> implements BookService {
@@ -71,16 +72,19 @@ public class BookImpl  extends AbstractJpaDAO<Book> implements BookService {
     public Book createNewBook(BookDto bookDto) {
         try {
             Book book= ConvertDtoToEntity.map(bookDto,Book.class);
-
             Author author=authorService.findOneById(bookDto.getAuthorId());
             Publisher publisher=publisherService.findOneById(bookDto.getPublisherId());
-            Category  category=categoryService.findOneById(bookDto.getCategoryId());
+            Set<Category> categories=new HashSet<>();
+            bookDto.getCategoryId().forEach(v->{
+                    Category category=new Category();
+                    category.setId(v);
+                    categories.add(category);
+            });
             if(book.getCategories()==null)
                 book.setCategories(new HashSet<>());
-            book.getCategories().add(category);
+            book.setCategories(categories);
             book.setAuthor(author);
             book.setPublisher(publisher);
-
             return bookRepository.save(book);
         }
         catch (Exception e){
@@ -88,5 +92,31 @@ public class BookImpl  extends AbstractJpaDAO<Book> implements BookService {
             return  null;
         }
 
+    }
+
+    @Override
+    public Book upadteBook(BookDto bookDto) {
+        try {
+            Book book= ConvertDtoToEntity.map(bookDto,Book.class);
+            Author author=authorService.findOneById(bookDto.getAuthorId());
+            Publisher publisher=publisherService.findOneById(bookDto.getPublisherId());
+            Set<Category> categories=new HashSet<>();
+            bookDto.getCategoryId().forEach(v->{
+                Category category=new Category();
+                category.setId(v);
+                categories.add(category);
+            });
+            System.out.println(categories);
+            if(book.getCategories()==null)
+                book.setCategories(new HashSet<>());
+            book.setCategories(categories);
+            book.setAuthor(author);
+            book.setPublisher(publisher);
+            return bookRepository.save(book);
+        }
+        catch (Exception e){
+            System.out.println(e);
+            return  null;
+        }
     }
 }

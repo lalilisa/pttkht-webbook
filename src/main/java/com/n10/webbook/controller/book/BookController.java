@@ -39,11 +39,10 @@ public class BookController {
         return  ResponseHander.response(bookService.createNewBook(bookDto), HttpStatus.OK);
     }
 
-    @PutMapping("{id}")
-    public ResponseEntity<?> upadateBooks(@RequestBody BookDto bookDto) {
-        Book book= ConvertDtoToEntity.map(bookDto,Book.class);
-        System.out.println(book);
-        return  ResponseHander.response(bookService.findAll(), HttpStatus.OK);
+    @PutMapping(value = "{id}",consumes = {"multipart/form-data"})
+    public ResponseEntity<?> upadateBooks(@PathVariable Long id,@ModelAttribute BookDto bookDto) {
+        bookDto.setId(id);
+        return  ResponseHander.response(bookService.upadteBook(bookDto), HttpStatus.OK);
     }
 
     @DeleteMapping("{id}")

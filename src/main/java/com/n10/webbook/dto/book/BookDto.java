@@ -6,6 +6,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 public class BookDto {
     @JsonIgnore
@@ -30,6 +32,6 @@ public class BookDto {
     private Long publisherId;
 
     @Schema(nullable = true,example = "1")
-    private Long categoryId;
+    private List<Long> categoryId;
 
 }
