@@ -40,7 +40,11 @@ public class AuthorImpl extends AbstractJpaDAO<Author> implements AuthorService 
 
     @Override
     public Author update(Author entity) {
-        return authorRepository.save(entity);
+        Author author=this.findOne(entity.getId());
+        author.setName(entity.getName());
+        author.setDateOfBirth(entity.getDateOfBirth());
+        author.setNickName(entity.getNickName());
+        return authorRepository.save(author);
     }
 
     @Override

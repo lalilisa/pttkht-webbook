@@ -34,7 +34,7 @@ public class Book implements Serializable{
     @Column(name = "Language")
     private String language;
 
-    @JsonManagedReference
+    @JsonBackReference
     @OneToMany(mappedBy = "book")
     private Set<Item> items;
 

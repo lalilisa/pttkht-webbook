@@ -3,6 +3,7 @@ package com.n10.webbook.service.impl.book;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.n10.webbook.common.dto.QueryDto;
 import com.n10.webbook.common.dto.ResponseListAll;
+import com.n10.webbook.dto.publisher.PublisherDto;
 import com.n10.webbook.entity.Publisher;
 import com.n10.webbook.repository.book.PublisherRepository;
 import com.n10.webbook.service.PublisherService;
@@ -39,6 +40,7 @@ public class PublisherImpl extends AbstractJpaDAO<Publisher> implements Publishe
 
     @Override
     public Publisher update(Publisher entity) {
+
         return PublisherRepository.save(entity);
     }
 

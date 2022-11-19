@@ -97,7 +97,11 @@ public class BookImpl  extends AbstractJpaDAO<Book> implements BookService {
     @Override
     public Book upadteBook(BookDto bookDto) {
         try {
-            Book book= ConvertDtoToEntity.map(bookDto,Book.class);
+            Book book= this.findOne(bookDto.getId());
+            book.setTitle(bookDto.getTitle());
+            book.setPublishYear(bookDto.getPublishYear());
+            book.setNumberOfPages(bookDto.getNumberOfPages());
+            book.setLanguage(bookDto.getLanguage());
             Author author=authorService.findOneById(bookDto.getAuthorId());
             Publisher publisher=publisherService.findOneById(bookDto.getPublisherId());
             Set<Category> categories=new HashSet<>();

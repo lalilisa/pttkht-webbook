@@ -12,7 +12,7 @@
 //
 //    private CloudinaryConfig cloudinaryConfig;
 //    public CloudinaryService(CloudinaryConfig cloudinaryConfig){
-//        this.cloudinaryConfig=cloudinaryConfig;
+//        thiss.cloudinaryConfig=cloudinaryConfig;
 //    }
 //
 //    // upload ảnh lên cloudinary, up thành công sẽ trả về link ảnh
