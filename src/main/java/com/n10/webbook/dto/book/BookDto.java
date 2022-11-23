@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -24,6 +25,9 @@ public class BookDto {
 
     @Schema(example = "Việt Nam")
     private String language;
+
+    @Schema(format = "binary")
+    private MultipartFile file;
 
     @Schema(nullable = true,example = "1")
     private Long  authorId;

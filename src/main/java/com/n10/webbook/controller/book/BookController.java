@@ -2,6 +2,7 @@ package com.n10.webbook.controller.book;
 
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.n10.webbook.cloudinary.CloudinaryService;
 import com.n10.webbook.common.util.ConvertDtoToEntity;
 import com.n10.webbook.common.util.response.ResponseHander;
 import com.n10.webbook.dto.book.BookDto;
@@ -25,6 +26,8 @@ public class BookController {
 
     @Autowired
     private BookService bookService;
+    @Autowired
+    private CloudinaryService cloudinaryService;
     @GetMapping("")
     public ResponseEntity<?> listBooks(@ParameterObject QueryBookDto queryDto) throws JsonProcessingException {
         return  ResponseHander.response(bookService.findAll(queryDto), HttpStatus.OK);
@@ -36,13 +39,15 @@ public class BookController {
     }
     @PostMapping(value = "",consumes = {"multipart/form-data"})
     public ResponseEntity<?> createBooks(@ModelAttribute BookDto bookDto) {
-        return  ResponseHander.response(bookService.createNewBook(bookDto), HttpStatus.OK);
+        Book book=bookService.createNewBook(bookDto);
+        return  ResponseHander.response(bookService.findOneById(book.getId()), HttpStatus.OK);
     }
 
     @PutMapping(value = "{id}",consumes = {"multipart/form-data"})
     public ResponseEntity<?> upadateBooks(@PathVariable Long id,@ModelAttribute BookDto bookDto) {
         bookDto.setId(id);
-        return  ResponseHander.response(bookService.upadteBook(bookDto), HttpStatus.OK);
+        Book book=bookService.upadteBook(bookDto);
+        return  ResponseHander.response(bookService.findOneById(book.getId()), HttpStatus.OK);
     }
 
     @DeleteMapping("{id}")
