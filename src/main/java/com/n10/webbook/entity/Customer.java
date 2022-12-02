@@ -9,9 +9,15 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Date;
 
+@NamedEntityGraph(
+        name = "customer-fetch",
+        attributeNodes = {
+                @NamedAttributeNode("fullname"),
+                @NamedAttributeNode("address"),
+        }
+)
 @Table(name = "customer")
 @Entity
-
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,15 +46,15 @@ public class Customer {
     private Boolean admin = false;
 
     @JsonManagedReference
-    @OneToOne(mappedBy = "customer")
+    @OneToOne(mappedBy = "customer",fetch =FetchType.EAGER)
     private Fullname fullname;
 
     @JsonManagedReference
-    @OneToOne(mappedBy = "customer")
+    @OneToOne(mappedBy = "customer",fetch = FetchType.EAGER)
     private Address address;
 
     @JsonIgnore
-    @OneToOne(mappedBy = "customer")
+    @OneToOne(mappedBy = "customer",fetch = FetchType.EAGER)
     private Account account;
 
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")

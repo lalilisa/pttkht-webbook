@@ -21,11 +21,11 @@ public class Cart {
     private Long id;
 
     @Column(name = "Amount", nullable = false)
-    private Integer amount;
+    private Integer amount=0;
 
 
-    @Column(name = "TotalPrice", nullable = false)
-    private Double totalPrice;
+    @Column(name = "TotalPrice",nullable = true)
+    private double totalPrice=0;
 
     @JsonManagedReference
     @OneToMany(mappedBy = "cart")

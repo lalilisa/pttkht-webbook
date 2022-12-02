@@ -7,7 +7,7 @@ import com.n10.webbook.common.util.response.ResponseHander;
 import com.n10.webbook.dto.publisher.PublisherDto;
 import com.n10.webbook.dto.publisher.QueryPublisherDto;
 import com.n10.webbook.entity.Publisher;
-import com.n10.webbook.service.PublisherService;
+import com.n10.webbook.service.publisher.PublisherService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springdoc.api.annotations.ParameterObject;

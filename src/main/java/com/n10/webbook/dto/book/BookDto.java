@@ -29,6 +29,9 @@ public class BookDto {
     @Schema(format = "binary")
     private MultipartFile file;
 
+    @Schema(example = "1212121")
+    private double price;
+
     @Schema(nullable = true,example = "1")
     private Long  authorId;
 

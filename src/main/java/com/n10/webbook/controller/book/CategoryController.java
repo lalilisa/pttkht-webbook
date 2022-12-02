@@ -6,7 +6,7 @@ import com.n10.webbook.common.util.response.ResponseHander;
 import com.n10.webbook.dto.category.CategoryDto;
 import com.n10.webbook.dto.category.QueryCategoryDto;
 import com.n10.webbook.entity.Category;
-import com.n10.webbook.service.CategoryService;
+import com.n10.webbook.service.category.CategoryService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springdoc.api.annotations.ParameterObject;

@@ -34,6 +34,9 @@ public class Book implements Serializable{
     @Column(name = "Language")
     private String language;
 
+    @Column(name = "Price")
+    private double price;
+
     @JsonBackReference
     @OneToMany(mappedBy = "book")
     private Set<Item> items;
@@ -164,6 +167,14 @@ public class Book implements Serializable{
 
     public void setUpdatedDatetime(Date updatedDatetime) {
         this.updatedDatetime = updatedDatetime;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     @Override

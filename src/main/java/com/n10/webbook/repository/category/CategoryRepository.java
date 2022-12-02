@@ -1,4 +1,4 @@
-package com.n10.webbook.repository.book;
+package com.n10.webbook.repository.category;
 
 import com.n10.webbook.entity.Category;
 import org.springframework.data.jpa.repository.JpaRepository;

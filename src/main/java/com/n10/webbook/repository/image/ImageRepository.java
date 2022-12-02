@@ -1,4 +1,4 @@
-package com.n10.webbook.repository.book;
+package com.n10.webbook.repository.image;
 
 import com.n10.webbook.entity.Image;
 import org.springframework.data.jpa.repository.JpaRepository;

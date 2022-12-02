@@ -6,14 +6,17 @@ import com.n10.webbook.enums.AccountStatus;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.security.SecureRandom;
 import java.time.LocalDate;
 import java.util.Date;
 
 @Table(name = "account")
 @Entity
-public class Account {
+public class Account implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -134,5 +137,12 @@ public class Account {
                 ", createdDatetime=" + createdDatetime +
                 ", updatedDatetime=" + updatedDatetime +
                 '}';
+    }
+    public String hashPassword(String plainPassword) {
+        int salt = 10;
+        BCryptPasswordEncoder bCryptPasswordEncoder =
+                new BCryptPasswordEncoder(salt, new SecureRandom());
+        return bCryptPasswordEncoder.encode(plainPassword);
+
     }
 }

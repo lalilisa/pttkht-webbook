@@ -1,11 +1,11 @@
-package com.n10.webbook.service.impl.book;
+package com.n10.webbook.service.impl.category;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.n10.webbook.common.dto.QueryDto;
 import com.n10.webbook.common.dto.ResponseListAll;
 import com.n10.webbook.entity.Category;
-import com.n10.webbook.repository.book.CategoryRepository;
-import com.n10.webbook.service.CategoryService;
+import com.n10.webbook.repository.category.CategoryRepository;
+import com.n10.webbook.service.category.CategoryService;
 import com.n10.webbook.service.impl.base.AbstractJpaDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
