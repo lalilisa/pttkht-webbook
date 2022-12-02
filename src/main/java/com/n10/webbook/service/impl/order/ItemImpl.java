@@ -42,7 +42,7 @@ public class ItemImpl implements ItemService {
 
     @Override
     public void deleleById(long id) {
-
+            this.itemRepository.deleteById(id);
     }
 
     @Override

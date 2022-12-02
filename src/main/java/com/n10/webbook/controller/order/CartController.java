@@ -3,8 +3,10 @@ package com.n10.webbook.controller.order;
 import com.n10.webbook.dto.order.IdItemDto;
 import com.n10.webbook.entity.Book;
 import com.n10.webbook.entity.Cart;
+import com.n10.webbook.repository.order.ItemRepository;
 import com.n10.webbook.service.book.BookService;
 import com.n10.webbook.service.order.CartService;
+import com.n10.webbook.service.order.ItemService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,8 @@ public class CartController {
     CartService cartService;
     @Autowired
     BookService bookService;
+    @Autowired
+    ItemService itemService;
     @GetMapping()
     public ResponseEntity<?> getAllItemsIncart(){
         Authentication authentication=SecurityContextHolder.getContext().getAuthentication();
@@ -42,7 +46,9 @@ public class CartController {
 
     @DeleteMapping("/item/{id}")
     public ResponseEntity<?> deleteItemInCart(@PathVariable Long id){
-
-        return ResponseEntity.ok("");
+        itemService.deleleById(id);
+        Authentication authentication=SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        return ResponseEntity.ok(cartService.getItemsInCart(userDetails.getUsername()));
     }
 }
