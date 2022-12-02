@@ -44,7 +44,10 @@ public class WebSercurity extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.csrf().disable();
         httpSecurity
-                .authorizeRequests().antMatchers("/api/book","/api/book/**").authenticated();
+                .authorizeRequests()
+                .antMatchers("/api/book", "/api/book/**",
+                            "/api/cart/**")
+                .authenticated();
         httpSecurity.exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         httpSecurity.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);

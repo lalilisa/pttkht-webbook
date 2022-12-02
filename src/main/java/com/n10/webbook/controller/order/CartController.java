@@ -46,9 +46,9 @@ public class CartController {
 
     @DeleteMapping("/item/{id}")
     public ResponseEntity<?> deleteItemInCart(@PathVariable Long id){
-        itemService.deleleById(id);
         Authentication authentication=SecurityContextHolder.getContext().getAuthentication();
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        itemService.deleleById(id);
         return ResponseEntity.ok(cartService.getItemsInCart(userDetails.getUsername()));
     }
 }
